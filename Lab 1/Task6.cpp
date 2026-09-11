@@ -27,6 +27,6 @@ int main(){
     for (int i = 0; i < count; i++) { //loop through the new array
         cout << numbers[i]<< " ";
     }
-    cout << "\nCount: " << count << endl;
+    cout << "\nCount: " << count<< endl; //show count of unique numbers
    
     }
