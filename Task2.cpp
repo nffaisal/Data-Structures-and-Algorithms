@@ -31,7 +31,7 @@ int main(){
       cout<<"\nPassed Count: "<< passed;
 
       delete[] marks;
-      marks =NULL;
+      marks =nullptr;
 
 
     return 0;
