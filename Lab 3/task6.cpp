@@ -7,8 +7,8 @@ struct Student{ //student struct/blueprint
     float marks[4];
     int n =4;
 };
-
-void displayStudent(const Student *student ){ //pointer function to display details
+               //Function To display Details
+void displayStudent(const Student *student ){ 
     cout<<"\n   STUDENT DETAILS:   "<<endl;
     cout<<"Full Name:  "<< student->fullName<<endl;
     cout<<"Roll Number:  "<<student->rollnumber<<endl;
@@ -17,6 +17,34 @@ void displayStudent(const Student *student ){ //pointer function to display deta
         cout<<student->marks[i]<<" ";
     }
 }
+//update marks Function 
+void updateMarks(Student *student){
+    int oldmarks,index,newMarks;
+    bool found =false;
+     cout<<"\nEnter  old marks to replace: ";
+     cin>>oldmarks;
+
+  for(int i=0; i<student->n;i++){  //CHECKING IF OLDMARKS exist
+    if(student->marks[i] == oldmarks){
+        index =i;
+        found =true;
+        break;
+    }
+  }
+   if(found) {
+
+        cout << "Enter New Marks: ";
+        cin >> newMarks;
+
+        student->marks[index] = newMarks;
+
+        cout << "Marks updated successfully!\n";
+    }
+    else {
+        cout << "Mark not found!\n";
+    }
+}
+               //Function To enter details
 void enterDetails(Student *student){
         cout<<"Enter full name: ";  //enter name
         getline(cin, student->fullName); 
@@ -37,18 +65,95 @@ void displayIfExists(const Student *s){  //if not null it wil print the details 
         cout<<"\n  No record Available \n";
     }
 }
+                                 //Create Record
+Student* createRecord(){   
 
-int main(){
-     cout<<"\n Without assigning an object and pointer pointing to NUll: \n ";
-     Student *s1 =nullptr;  //pointer points to nothing
-     displayIfExists(s1);
-     cout<<"\n After assigning an object and entering details: \n ";
-     s1 = new Student;  //created an actual struct
-     enterDetails(s1);   //entering details
-     displayIfExists(s1);
-     cout<<"\n After deleting pointer and setting it to null: \n ";
-     delete s1;       //deleting pointer and setting it to null
-     s1 =nullptr;
-     displayIfExists(s1);
+    Student *student = new Student;
 
+    enterDetails(student);
+
+    return student;
+}
+
+                      //function to delete a record
+void deleteRecord(Student *&student) { 
+
+    if(student != nullptr) {
+
+        delete student;
+        student = nullptr;
+
+        cout << "Record deleted successfully!\n";
+    }
+    else {
+        cout << "No record to delete.\n";
+    }
+}
+
+                                // Menu storing options 
+void Menu(Student *&student) {
+
+    int option;
+
+    do {
+
+        cout << "\n========== MENU ==========\n";
+        cout << "1. Create a record\n";
+        cout << "2. Delete a record\n";
+        cout << "3. Display a record\n";
+        cout << "4. Update marks\n";
+        cout << "5. Exit\n";
+        cout << "Enter option: ";
+
+        cin >> option;
+
+        switch(option) {
+
+            case 1:
+                if(student == nullptr) {
+                    student = createRecord();
+                }
+                else {
+                    cout << "A record already exists.\n";
+                }
+                break;
+
+            case 2:
+                deleteRecord(student);
+                break;
+
+            case 3:
+                displayIfExists(student);
+                break;
+
+            case 4:
+                if(student != nullptr) {
+                    updateMarks(student);
+                }
+                else {
+                    cout << "No record available.\n";
+                }
+                break;
+
+            case 5:
+                cout << "Exiting program...\n";
+                break;
+
+            default:
+                cout << "Invalid option!\n";
+        }
+
+    } while(option != 5);
+}
+
+
+
+
+int main() {
+
+    Student *s1 = nullptr;
+
+    Menu(s1);
+
+    return 0;
 }
