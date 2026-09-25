@@ -30,29 +30,25 @@ void enterDetails(Student *student){
     }
 
 }
-void updateMarks(Student *student,float newMarks, int pos){
-        student->marks[pos] =newMarks;  
-}
-int main(){
-     int newMarks,oldmarks, index;
-     bool found =false;    
-     Student *s1 =new Student;
-     enterDetails(s1);
-     displayStudent(s1);
-     cout<<"\nEnter  old marks to replace: ";
-
-     cin>>oldmarks;
-
-  for(int i=0; i<s1->n;i++){  //CHECKING IF OLDMARKS exist
-    if(s1->marks[i] == oldmarks){
-        index =i;
-        found =true;
-        break;
+void displayIfExists(const Student *s){  //if not null it wil print the details of the student
+    if(s != nullptr){
+        displayStudent(s);
+    }else{
+        cout<<"\n  No record Available \n";
     }
-  }
-  cout<<"Enter New Marks: "; //enter new marks to replace the old marks with
-  cin>>newMarks;
-  updateMarks(s1,newMarks,index);
-  displayStudent(s1);
+}
+
+int main(){
+     cout<<"\n Without assigning an object and pointer pointing to NUll: \n ";
+     Student *s1 =nullptr;  //pointer points to nothing
+     displayIfExists(s1);
+     cout<<"\n After assigning an object and entering details: \n ";
+     s1 = new Student;  //created an actual struct
+     enterDetails(s1);   //entering details
+     displayIfExists(s1);
+     cout<<"\n After deleting pointer and setting it to null: \n ";
+     delete s1;       //deleting pointer and setting it to null
+     s1 =nullptr;
+     displayIfExists(s1);
 
 }
