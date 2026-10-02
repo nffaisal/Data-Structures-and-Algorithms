@@ -91,4 +91,5 @@ int main(){
     }
     myList.PrintList();
     myList.countNodes();
+    cout << "\nNumber of nodes: " << myList.countNodes();
 }
