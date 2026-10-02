@@ -71,20 +71,20 @@ class List{
             }
             cout<<"\nValue Not Found..";
         }
-        void insertAtBeginning(int data){  //simply make a new node and then get its pointer to point to the head and then 
+        void insertAtBeginning(int data){  //simply make a new node and then get its pointer to point to the head 
             Node *newStart = new Node;
             newStart->next =head;
             newStart->data =data;
-            head =newStart;
+            head =newStart;  //get our variable head to point to the new beginning node
         }
 
 };
 
 int main(){
-   List myList;
+   List myList; //initialized List
    myList.clearList();
+   myList.insertAtBeginning(10);
    myList.insertAtBeginning(20);
-   myList.insertAtBeginning(30);
    myList.AddNode(30);
    myList.PrintList();
  
