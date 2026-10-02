@@ -49,14 +49,46 @@ class List{
                 temp->next =nullptr;      //at the end of the array
             }
         }
-       
+        void AddNode(int data){
+            Node *current = head;
+             if(current == NULL){
+                 head =new Node;
+                 head->data=data;
+                 head->next=nullptr;
+                 return;
+                 }
+             while(current->next != nullptr){
+                current = current ->next;
+             }
+             current->next =new Node;
+             current->next->data=data;
+             current->next->next=nullptr;
+        }
+        int countNodes(){
+            Node *current=head;
+            int count=0;
+            while(current != nullptr){ //increasing the counter
+                current= current->next;
+                count++;
+            }
+            return count;
+        }
+
 };
 
 int main(){
    List myList;
-    myList.clearList();
-     myList.PrintList();
-    myList.CreateThreeNodes();
+    cout<<"Enter a non-negative integer: ";
+    int n,value;
+    cin>>n;
+    if(n<0){
+        cout<<" Oops Negative Number entered..\n";
+    }
+    cout<<"Enter Values: ";
+    for(int i=0;i<n;i++){
+        cin>>value;
+        myList.AddNode(value);
+    }
     myList.PrintList();
-
+    myList.countNodes();
 }
