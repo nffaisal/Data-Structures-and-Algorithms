@@ -192,10 +192,7 @@ public:
 
 int main() {
 
-    // Name:
-    // Registration Number:
-    // Section:
-
+   
     CircularList list;
 
     int count;
