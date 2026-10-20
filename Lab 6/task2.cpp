@@ -1,8 +1,3 @@
-// Name: YOUR NAME
-// Registration Number: YOUR ROLL NUMBER
-// Section: BSCS-15D / BSCS-15E
-// Task 2: Stack using a linked list
-
 #include <iostream>
 using namespace std;
 
