@@ -41,7 +41,7 @@ public:
              << endl;
     }
 
-    void Dequeue() { //remove 
+    void Dequeue() { //remove and display first value
         if (IsEmpty()) {
             cout << "Queue is empty! Cannot dequeue."
                  << endl;
@@ -50,8 +50,7 @@ public:
 
         cout << "Removed: " << arr[front] << endl;
 
-        // If this was the last element
-        if (front == rear) {
+        if (front == rear) { //if this was the last element
             front = -1;
             rear = -1;
         } else {
@@ -59,8 +58,7 @@ public:
         }
     }
 
-    // Display the front value without removing it
-    void Peek() {
+    void Peek() { //display front value without removing it
         if (IsEmpty()) {
             cout << "Queue is empty! Nothing to peek."
                  << endl;
@@ -70,8 +68,7 @@ public:
         cout << "Front element: " << arr[front] << endl;
     }
 
-    // Display elements from front to rear
-    void Display() {
+    void Display() { //display elements front to rear
         if (IsEmpty()) {
             cout << "Queue is empty." << endl;
             return;
@@ -88,14 +85,11 @@ public:
 };
 
 int main() {
-    // Replace these details with your own
-    // Name: Your Name
-    // Registration Number: Your Registration Number
-    // Section: BSCS-15D / BSCS-15E
+
 
     ArrayQueue q;
 
-    cout << "===== Task 1: Linear Array Queue ====="
+    cout << "Task 1: Linear Array Queue"
          << endl;
 
     // Insert five values
