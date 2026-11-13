@@ -1,8 +1,10 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-/* I used Linked List implementation as it does not require resizing of lists
- once capacity is reached and it allows for o(n) traversal*/
+/*  Noor Fatima CMS ID: 559891 Section: BSCS 15D
+I used Linked List implementation as it does not require resizing of lists
+ once capacity is reached and it allows for o(n) traversal
+ Adding and Searching Students is O(n) time complexity*/
 
 struct Student{ //contains all the students details
     string name;
@@ -20,7 +22,7 @@ public:
     HelpDesk(){ //constructor initializing the private data types
     head=NULL;
     }
-    ~HelpDesk() {
+    ~HelpDesk() { //destructor for when the program stops running
 
     Student* curr = head;
 
@@ -54,34 +56,27 @@ public:
 
     // Create new node
     Student* newStudent = new Student();
-
     newStudent->name = name;
     newStudent->rollno = rollno;
     newStudent->next = nullptr;
 
     // If list is empty
-    if(head == nullptr) {
-        head = newStudent;
-    }
+    if(empty()) {   head = newStudent;}
 
     else {
 
         Student* curr = head;
-
-        // Traverse to last node
         while(curr->next != nullptr) {
             curr = curr->next;
         }
-
-        // Connect new node
-        curr->next = newStudent;
+        curr->next = newStudent; //connect last node to the new student
     }
     cout << "\nStudent Added Successfully!";
 }
-    bool empty(){
+    bool empty(){ //helper function
         return head ==nullptr;
     }
-    bool SearchStudent(int rollno){
+    bool SearchStudent(int rollno){ //Search for the correct student
         Student *curr=nullptr;
         if(empty()){
         // No students Registered yet 
@@ -127,7 +122,7 @@ public:
         request.push(rollno);
         cout << "\nHelp Request Added!";
     }
-    void ServeRequest(){
+    void ServeRequest(){ // Serve the first in request
         if(request.empty()){
             cout<<"\nNo Pending Requests!";
             return;
@@ -140,13 +135,13 @@ public:
     
     //Can further add display queue function
 };
-class Menu{
+class Menu{ //Menu containing HelpDesk
     private:
         int choice;
         HelpDesk HelpDesk1;
     public:
     void display(){ //Menu for rotating options
-        
+
         int rollno;
         bool found;
           cout << "\n--Student Help Desk--\n";
